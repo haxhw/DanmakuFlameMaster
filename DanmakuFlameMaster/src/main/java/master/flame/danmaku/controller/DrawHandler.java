@@ -555,10 +555,14 @@ public class DrawHandler extends Handler {
         long averageFrameConsumingTime = 16;
         mCordonTime = Math.max(33, (long) (averageFrameConsumingTime * 2.5f));
         mCordonTime2 = (long) (mCordonTime * 2.5f);
-        mFrameUpdateRate = Math.max(16, averageFrameConsumingTime / 15 * 15);
+        // mFrameUpdateRate = Math.max(16, averageFrameConsumingTime / 15 * 15);
+        // mThresholdTime = mFrameUpdateRate + 3;
+
+        mFrameUpdateRate = getConfig().getFrameUpdateRate();
         mThresholdTime = mFrameUpdateRate + 3;
-//        Log.i("DrawHandler", "initRenderingConfigs test-fps:" + averageFrameConsumingTime + "ms,mCordonTime:"
-//                + mCordonTime + ",mFrameRefreshingRate:" + mFrameUpdateRate);
+       Log.i("DrawHandler", "initRenderingConfigs test-fps:" + averageFrameConsumingTime + "ms,mCordonTime:"
+               + mCordonTime + ",mFrameRefreshingRate:" + mFrameUpdateRate);
+
     }
 
     private void prepare(final Runnable runnable) {
